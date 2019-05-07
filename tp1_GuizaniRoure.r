@@ -116,7 +116,7 @@ testinde <- function(X,moyth,n) {
 #notre hypothese c'est que l'inflation affecte le cout de vie 
 #on prend h0=l'inflatiohn n'affecte pas le cout de vie 
 #puis on calcule la valeur critique=2.145 et le score ici =2.177369
-#on remarque que la valeur critique est plus grande que le score donc notre hypothese H0est rejeté .
+#on remarque que la valeur critique est plus grande que le score donc notre hypothese H0 est rejeté .
 #nous pouvons pas conclure si l'inflation affecte le cout de la vie ou non .
 print("score=")
 print(testinde(etudiant$Marseille,19,15))
@@ -132,7 +132,11 @@ testinde2 <- function(X,Y) {
 }
   
 
-#Il n'existe pas d'indépendance car la valeur obtenu est plus petite celle correpondant au tableau Khi deux (2.32 < 20.07)
+#notre hypothese correspond a une dépendance significative entre Marseille et Aix-en-Provence
+#on prend h0=il existe une dépendance significative entre Marseille et Aix-en-Provence 
+#puis on calcule la valeur critique=20.07 et le score ici =2.321494
+#on remarque que la valeur critique est plus petite que le score donc notre hypothese H0 est accepté .
+#nous pouvons qu'il existe une dépendance significative entre Marseille et Aix-en-Provence .
 print(testinde2(etudiant$Marseille,etudiant$Aix))
   
 #test non parametrique:
@@ -152,9 +156,14 @@ khiDeux<- function(l){
   }
   return(somme)
 }
-#print(khiDeux(l))
-khiDeux(l)
-#L'hypothèse H0 est fausse puisque le la valeur du Khi deux ne correspond à celle dans le tableau. 
+print("khideux=")
+print(khiDeux(l))
+#notre hypothese est "le vrai ratio est 9:3:3:1"
+#on prend h0="le vrai ratio est 9:3:3:1"
+#puis on regarde la valeur de khi deux dans le tableau =2.73 et le khi deux calculé ici =967.5195
+#on remarque que la valeur critique est plus grande que le score donc notre hypothese H0 est rejetée .
+#nous pouvons que le vrai ratio n est pas 9:3:3:1.
+
 
 #8
 l2f<-data.frame(dotCNA = c(29,34.8), dotCNat = c(5,23.6), dotCNT = c(46,21.6), dotANA = c(5,34.8), dotANat = c(32,23.6), dotANT = c(22,21.6), dotMA = c(46,17.4), dotMat = c(8,11.8), dotMT = c(0,10.8))
@@ -172,8 +181,11 @@ khiDeux2<- function(l){
 
 print(khiDeux2(l2f))
 print(khiDeux2(l2c))
-
-#Aucune des 2 valeurs nous permet de conclure car elles sont plus grandes que celles correspondantes au tableau Khi deux.
+#notre hypothese est "les deux variables sont indepandantes"
+#on prend h0="les deux variables sont indepandantes"
+#puis on regarde les valeurs de khi deux dans le tableau =2.73 et 1.15 et les khi deux calculé ici =130.7375 et 2.39415
+#on remarque que les valeurs critiques sont plus grandes que les scores corresponants donc notre hypothese H0 est rejetée .
+#nous pouvons que lles deux variables sont indepandantes.
 
 #9
 #Le test de Student est basé sur un échantillon qui suit une distribution normale et le test du Khi deux suit une distribution expérimentale et pas statistique.
