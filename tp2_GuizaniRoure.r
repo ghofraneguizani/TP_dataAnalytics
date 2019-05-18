@@ -1,3 +1,4 @@
+
 #TP2 - Analyse de Données
 #INFO 4A
 #Ghofrane Guizani
@@ -30,8 +31,8 @@ vectP=x$vectors # vecteurs propres
 pca <- prcomp(A)
 pca$rotation
 ecartType <- pca$sdev
-variance <- 100 * pca$sdev^2 / sum(pca$sdev^2)  
-varianceTotale <- sum(100 * (pca$sdev^2)[1:2] / sum(pca$sdev^2)) 
+variance <- 100 * pca$sdev^2 / sum(pca$sdev^2)
+varianceTotale <- sum(100 * (pca$sdev^2)[1:2] / sum(pca$sdev^2))
 print(ecartType)
 print(variance)
 print(varianceTotale)
@@ -55,17 +56,22 @@ c <- c(pca[2]$rotation[3,1],0)
 plot3d(a,b,c, type="l")
 scatter(pc2,pc3)
 
-
-D <- matrix(nrow = 10,ncol=1);
-for( i in 1:10){
-  D[i,1] <- pc1[1] * A[i,1] + pc1[2] * A[i,2] + pc1[3] * A[i,3]
+tracer <- function(A,pc1) {
+  D <- matrix(nrow = 10,ncol=1);
+  for( i in 1:10){
+    D[i,1] <- pc1[1] * A[i,1] + pc1[2] * A[i,2] + pc1[3] * A[i,3]
   }
+  return(D)
+}
+
+tracer(A,pc1)
+
 
 
 plt<-scatterplot3d(pca$rotation)
 plt$points3d(pc1, type="l", col="blue", lwd=2)
 
-# 7. 
+# 7.
 
 P = matrix(c(C[,1],C[,2]), ncol=2)
 plot(P[,1], P[,2], main="Nuage", xlab="Stature", ylab="Poids", pch=19)
@@ -73,5 +79,4 @@ plot(P[,1], P[,2], main="Nuage", xlab="Stature", ylab="Poids", pch=19)
 plot(C[,1],C[,2])
 
 # 8.
-#Les résultats obtenus sont cohérents, en effet on remarque que la stature posséde les valeurs les plus important,
-
+#Les résultats obtenus sont cohérents, en effet on remarque que la stature posséde les valeurs les plus importants
